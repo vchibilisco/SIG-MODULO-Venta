@@ -19,18 +19,15 @@ public class Formato {
         fmt.format("%010d", num);
         return fmt;
     }
-    
-    public static DecimalFormat precio(){
+
+    public static DecimalFormat precio() {
         DecimalFormatSymbols simb = new DecimalFormatSymbols();
         simb.setDecimalSeparator('.');
-        DecimalFormat df = new DecimalFormat("#######.##",simb);
+        DecimalFormat df = new DecimalFormat("#######.##", simb);
         return df;
     }
-    
-    
-    
-    
-    public static DecimalFormat cambioCarater(){
+
+    public static DecimalFormat cambioCarater() {
         //DecimalFormatSymbols simb = new DecimalFormatSymbols();
         //simb.setDecimalSeparator('.');
         DecimalFormat df = new DecimalFormat("#,###,###.##");

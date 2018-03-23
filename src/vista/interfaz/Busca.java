@@ -3,6 +3,8 @@ package vista.interfaz;
 import vista.recursos.ModeloTabla;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -172,7 +174,7 @@ public class Busca extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void txtBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyPressed
-        filtro(0);
+        filtro(0, 1);
     }//GEN-LAST:event_txtBuscarKeyPressed
 
     private void agregar() {
@@ -224,7 +226,10 @@ public class Busca extends javax.swing.JDialog {
     }
 
     //Metodo que filtra
-    private void filtro(int colum) {
-        filtroDatos.setRowFilter(RowFilter.regexFilter(txtBuscar.getText().toUpperCase(), colum));
+   private void filtro(int id, int description) {
+        List<RowFilter<Object, Object>> filters = new ArrayList<>(2);
+        filters.add(RowFilter.regexFilter(txtBuscar.getText().toUpperCase(), id));
+        filters.add(RowFilter.regexFilter(txtBuscar.getText().toUpperCase(), description));
+        filtroDatos.setRowFilter(RowFilter.orFilter(filters));
     }
 }
